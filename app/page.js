@@ -24,7 +24,7 @@ export default function Home() {
         <>
         <div className="flex  text-white items-center gap-3">
             <Image src={assets.logo_icon} alt="logo" className="h-16"/>
-<p className="text-2xl font-medium">Hi, I'm Deepseek.</p>
+<p className="text-2xl font-medium">Hi, Im Deepseek.</p>
         </div>
         <p className="text-white">How can i Help You Today?</p></>
     ):(

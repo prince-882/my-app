@@ -25,13 +25,13 @@ export async function POST(request) {
  await ConnectDb()
   switch (type) {
     case 'user.created':
-      User.create(Newuser)
+       await User.create(Newuser)
       break;
     case 'user.updated':
-      User.findByIdAndDelete(data.id, Newuser)
+       await User.findByIdAndUpdate(data.id, Newuser)
       break;
     case 'user.deleted':
-      User.findByIdAndDelete(data.id)
+      await User.findByIdAndDelete(data.id)
       break;
     default:
       break;

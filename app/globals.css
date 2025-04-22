@@ -12,3 +12,10 @@ html{
 body{
     background-color: var(--primary-color);
 }
+
+code{
+  white-space: pre-wrap !important;
+}
+pre{
+  border-radius: 10px !important;
+}

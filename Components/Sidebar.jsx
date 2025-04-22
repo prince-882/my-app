@@ -7,8 +7,9 @@ import Chatlabel from "./Chatlabel";
 
 const Sidebar = ({ expand, setExpand }) => {
   const { openSignIn } = useClerk();
-  const { user } = useAppContext();
   const [openMenu, setOpenMenu] = useState({id:0,menu:false})
+   const { Chats, user, setChats, Selectedchat, setSelectedchat,CreateNewChat } =
+    useAppContext();
   return (
     <div
       className={`bg-[#212327] flex flex-col z-50 pt-7 max-md:absolute max-md:h-screen justify-between transition-all ${
@@ -52,7 +53,7 @@ const Sidebar = ({ expand, setExpand }) => {
             </div>
           </div>
         </div>
-        <button
+        <button onClick={CreateNewChat}
           className={`flex  mt-8 items-center justify-center cursor-pointer ${
             expand
               ? "bg-blue-500 hover:opacity-90 rounded-2xl gap-2 p-2.5 w-max"
@@ -65,7 +66,7 @@ const Sidebar = ({ expand, setExpand }) => {
             alt=""
           />
           <div className="absolute w-max  top-12 -right-7 opacity-0  group-hover:opacity-100 bg-black text-sm  px-3 py-2 transition cursor-pointer rounded-lg shadow-lg pointer-events-none">
-            New Chat
+             Chat
             <div className="w-3 h-3 absolute bg-black rotate-45 left-1/2 -translate-x-1/2 -top-1.5"></div>
           </div>
           {expand && <p className="text-white font-medium">New Chat</p>}
@@ -76,7 +77,12 @@ const Sidebar = ({ expand, setExpand }) => {
           }`}
         >
           <p className="my-1">Recents</p>
-          <Chatlabel openMenu={openMenu} setOpenMenu={setOpenMenu} />
+          {
+Chats.map((item,index)=>{
+return <Chatlabel openMenu={openMenu} setOpenMenu={setOpenMenu} chatname={item.name} key={index} id={item._id} 
+selId={item._id===Selectedchat._id} item={item} setSelectedchat={setSelectedchat} Selectedchat={Selectedchat} Chats={Chats} setChats={setChats}/>
+})
+          }
         </div>
       </div>
 
